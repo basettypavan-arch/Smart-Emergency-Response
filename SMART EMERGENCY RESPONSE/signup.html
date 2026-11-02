@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Emergency Response Admin Signup</title>
+    <meta name="description" content="Create a new admin account for the emergency response dashboard." />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="login-page">
+    <div class="login-shell">
+      <div class="login-panel">
+        <div class="illustration-card">
+          <div class="orb orb-one"></div>
+          <div class="orb orb-two"></div>
+          <div class="illustration-glow"></div>
+          <svg class="cartoon-figure" viewBox="0 0 320 320" role="img" aria-label="Cartoon admin creating an account">
+            <circle cx="160" cy="110" r="54" fill="#fbbf24" />
+            <path d="M86 220c10-56 54-84 74-84s64 28 74 84" fill="#2563eb" />
+            <rect x="110" y="140" width="100" height="104" rx="26" fill="#111827" />
+            <rect x="130" y="162" width="60" height="54" rx="16" fill="#f59e0b" />
+            <circle cx="134" cy="112" r="3" fill="#ffffff" />
+            <circle cx="186" cy="112" r="3" fill="#ffffff" />
+            <path d="M132 140c16 14 40 14 56 0" stroke="#7c2d12" stroke-width="4" fill="none" stroke-linecap="round" />
+            <circle cx="228" cy="116" r="12" fill="#f59e0b" />
+            <path d="M238 124l22 20" stroke="#f59e0b" stroke-width="8" stroke-linecap="round" />
+          </svg>
+          <div class="status-pill">🛡️ Secure account</div>
+        </div>
+
+        <div class="login-card">
+          <h1>Create Account</h1>
+          <p class="login-subtitle">Register to access the emergency dashboard.</p>
+
+          <form id="adminSignupForm" class="login-form">
+            <label>
+              Full Name
+              <input id="fullName" type="text" placeholder="Enter full name" required />
+            </label>
+            <label>
+              Email
+              <input id="signupEmail" type="email" placeholder="Enter email" required />
+            </label>
+            <label>
+              Username
+              <input id="signupUsername" type="text" placeholder="Create username" required />
+            </label>
+            <label class="password-field">
+              Password
+              <input id="signupPassword" type="password" placeholder="Create password" required />
+              <button id="signupTogglePassword" class="toggle-password" type="button">Show</button>
+            </label>
+            <label>
+              Confirm Password
+              <input id="signupConfirmPassword" type="password" placeholder="Confirm password" required />
+            </label>
+            <button class="btn btn-primary full-width" type="submit">Create Account</button>
+            <p id="signupMessage" class="login-message">Register your account.</p>
+            <p class="account-link">
+              Already have an account?
+              <a href="index.html">Back to login</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

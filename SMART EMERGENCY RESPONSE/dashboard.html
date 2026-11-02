@@ -1,0 +1,540 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Emergency Response Dashboard</title>
+    <meta name="description" content="Smart emergency dashboard for village response, alerts, categories, and safety monitoring." />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="dashboard-page">
+    <div class="app-shell" id="appShell">
+      <header class="hero">
+        <nav class="nav container">
+          <div class="brand">🚑 Smart Emergency Response</div>
+          <div class="nav-actions">
+            <a class="nav-link" href="#modules">Explore Modules</a>
+            <button id="themeToggle" class="theme-toggle" type="button">🌙 Dark</button>
+            <button id="logoutButton" class="logout-btn" type="button">⎋ Logout</button>
+          </div>
+        </nav>
+
+        <div class="admin-toolbar container">
+          <div class="admin-pill">🛡️ Admin connected</div>
+          <div class="toolbar-status">Live monitoring • 12 responders online</div>
+        </div>
+
+        <div class="container landing-banner">
+          <span class="landing-dot"></span>
+          <div>
+            <strong>Live village safety update:</strong>
+            <span>Emergency systems are fully active. Watch the admin portal come alive.</span>
+          </div>
+          <a class="landing-action" href="#modules">Explore now</a>
+        </div>
+
+        <div class="container hero-grid">
+          <div>
+            <p class="eyebrow">Made for village communities</p>
+            <h1>Fast help when every second matters.</h1>
+            <div class="hero-badge-row">
+              <span class="hero-badge">🛰️ Low-latency alerts</span>
+              <span class="hero-badge subtle">🤝 Community-first support</span>
+            </div>
+            <div class="hero-feature-row">
+              <span class="feature-pill">Secure village access</span>
+              <span class="feature-pill">Live alert intelligence</span>
+              <span class="feature-pill">Community safety hub</span>
+            </div>
+            <div class="module-category-row">
+              <span class="module-category-pill category-safety">Safety</span>
+              <span class="module-category-pill category-comm">Communication</span>
+              <span class="module-category-pill">Shelter</span>
+            </div>
+            <p class="hero-text">
+              This platform helps rural families send SOS alerts, relay messages across long distances,
+              and connect quickly with nearby support teams.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#sos">Send SOS Test</a>
+              <a class="btn btn-secondary" href="#communication">See Communication</a>
+            </div>
+            <div class="alert-banner" id="alertBanner">
+              <span>⚠</span>
+              <strong>Live alert:</strong> Flood watch active in nearby river belt.
+            </div>
+            <div class="hero-highlights">
+              <div class="hero-chip">⚡ Fast dispatch</div>
+              <div class="hero-chip alt">🧭 Guided shelter routes</div>
+              <div class="hero-chip">📞 Reliable relay</div>
+            </div>
+          </div>
+
+          <div class="hero-card app-preview">
+            <div class="phone-frame">
+              <div class="phone-header">Emergency App</div>
+              <div class="phone-screen">
+                <div class="pill">Live status</div>
+                <h3 id="statusText">Ready for village support</h3>
+                <div class="mini-stats">
+                  <div id="liveClock">--:--:--</div>
+                  <div id="liveLocation">Location: Village Center</div>
+                  <div>3 responders nearby</div>
+                  <div>4 villages connected</div>
+                </div>
+                <div class="phone-actions">
+                  <button id="quickHelpBtn" class="chip" type="button">⚡ Quick Help</button>
+                  <button id="appRelayBtn" class="chip alt" type="button">📡 Relay</button>
+                </div>
+              </div>
+              <div class="floating-info-card">
+                <span>🧭 Live route</span>
+                <strong>North shelter • 1 min</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="dashboard-shell">
+        <aside class="sidebar">
+          <h3>Village Control</h3>
+          <div class="sidebar-card active">
+            <span>🛑</span>
+            <div>
+              <strong>SOS Ready</strong>
+              <p>Monitor emergencies instantly</p>
+            </div>
+          </div>
+          <div class="sidebar-card">
+            <span>📡</span>
+            <div>
+              <strong>Relay Online</strong>
+              <p>Message exchange active</p>
+            </div>
+          </div>
+          <div class="sidebar-card">
+            <span>🧭</span>
+            <div>
+              <strong>Location Sync</strong>
+              <p>GPS connection stable</p>
+            </div>
+          </div>
+          <div class="siren-box">
+            <div class="siren-ring"></div>
+            <p>Emergency siren active</p>
+          </div>
+        </aside>
+
+        <section class="main-panel">
+          <section id="modules" class="container section">
+            <div class="section-heading">
+              <p class="eyebrow">Main modules</p>
+              <h2>Smart emergency features</h2>
+            </div>
+
+            <div class="quick-access" aria-label="Quick access features">
+              <button class="quick-btn" data-filter="emergency" aria-pressed="false">🛰️ Low-latency alerts</button>
+              <button class="quick-btn" data-filter="communication" aria-pressed="false">🤝 Community-first support</button>
+              <button class="quick-btn" data-filter="communication" aria-pressed="false">Secure village access</button>
+              <button class="quick-btn" data-filter="emergency" aria-pressed="false">Live alert intelligence</button>
+              <button class="quick-btn" data-filter="navigation" aria-pressed="false">Shelter</button>
+            </div>
+
+            <div class="category-sections">
+              <article class="category-block emergency" data-category="emergency">
+                <div class="category-title">
+                  <span class="category-pill category-safety">Emergency</span>
+                  <h3>Rapid SOS response</h3>
+                </div>
+                <div class="card-grid single-card">
+                  <article id="sos" class="card">
+                    <div class="icon">🆘</div>
+                    <h3>SOS Alerts</h3>
+                    <p>Fast alert messaging for urgent support.</p>
+                    <ul>
+                      <li>Sends instant SOS emergency alerts</li>
+                      <li>Works using GSM and LoRa communication</li>
+                      <li>Shares live GPS location of the user</li>
+                    </ul>
+                    <button id="sosButton" class="btn btn-primary full-width">Trigger SOS Alert</button>
+                  </article>
+                </div>
+
+                <div class="response-gallery">
+                  <div class="response-item" data-index="0">
+                    <img src="assets/rescue.svg" alt="Emergency response team assisting residents" class="gallery-open" />
+                    <div class="caption">Team assisted families to shelter • Green Valley</div>
+                  </div>
+                  <div class="response-item" data-index="1">
+                    <img src="assets/medical.svg" alt="Medical support arriving" class="gallery-open" />
+                    <div class="caption">Medical team arrived and stabilized patients</div>
+                  </div>
+                  <div class="response-item" data-index="2">
+                    <img src="assets/security.svg" alt="Security and safety response operations" class="gallery-open" />
+                    <div class="caption">Security team coordinated safe evacuation route</div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="category-block communication" data-category="communication">
+                <div class="category-title">
+                  <span class="category-pill category-comm">Communication</span>
+                  <h3>Reliable message relay</h3>
+                </div>
+                <div class="card-grid single-card">
+                  <article id="communication" class="card">
+                    <div class="icon">📡</div>
+                    <h3>Reliable Communication</h3>
+                    <p>Connects every village with fast warning and support channels.</p>
+                    <ul>
+                      <li>Provides disaster warnings and notifications</li>
+                      <li>Supports communication even without internet</li>
+                      <li>Helps users find nearby shelters and emergency services</li>
+                    </ul>
+                    <button id="relayButton" class="btn btn-secondary full-width" data-filter="communication">Send Relay Message</button>
+                  </article>
+                </div>
+              </article>
+
+              <article class="category-block navigation" data-category="navigation">
+                <div class="category-title">
+                  <span class="category-pill accent">Navigation</span>
+                  <h3>Safe shelter routing</h3>
+                </div>
+                <div class="card-grid single-card">
+                  <article id="navigation" class="card">
+                    <div class="icon">🧭</div>
+                    <h3>Route Guidance</h3>
+                    <p>Know the fastest safe route to nearby shelters in seconds.</p>
+                    <ul>
+                      <li>Highlights nearest safe shelter locations</li>
+                      <li>Provides route direction and arrival estimates</li>
+                      <li>Updates live with local conditions</li>
+                    </ul>
+                    <button class="btn btn-secondary full-width" data-filter="navigation">View Shelter Routes</button>
+                  </article>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section class="container section alt-bg">
+            <div class="section-heading">
+              <p class="eyebrow">Emergency map</p>
+              <h2>See the nearest help points in one view</h2>
+            </div>
+
+            <div class="dashboard-grid">
+              <div class="status-card">
+                <h3>Village Dashboard</h3>
+                <div class="status-row"><span>Active Alerts</span><strong>2</strong></div>
+                <div class="status-row"><span>Responders</span><strong>12</strong></div>
+                <div class="status-row"><span>Coverage</span><strong>94%</strong></div>
+              </div>
+              <div class="status-card">
+                <h3>Live Status Cards</h3>
+                <div class="mini-card green">Safe zone ready</div>
+                <div class="mini-card yellow">Medical team on route</div>
+                <div class="mini-card blue">Signal relay active</div>
+              </div>
+            </div>
+
+            <div class="shelter-grid">
+              <div class="shelter-card">
+                <h3>Nearby Shelters</h3>
+                <div class="shelter-item">
+                  <div>
+                    <strong>Primary School Shelter</strong>
+                    <p>1.2 km away • Near Main Road</p>
+                  </div>
+                  <span>→ North</span>
+                </div>
+                <div class="shelter-item">
+                  <div>
+                    <strong>Community Hall</strong>
+                    <p>2.0 km away • Near River Gate</p>
+                  </div>
+                  <span>↗ East</span>
+                </div>
+                <div class="shelter-item">
+                  <div>
+                    <strong>Church Hall</strong>
+                    <p>2.8 km away • Near Market Square</p>
+                  </div>
+                  <span>↘ South</span>
+                </div>
+              </div>
+              <div class="shelter-card location-card">
+                <h3>Current Location</h3>
+                <p><strong>Village:</strong> Green Valley</p>
+                <p><strong>District:</strong> North Region</p>
+                <p><strong>Coordinates:</strong> 12.34 N, 77.56 E</p>
+                <div class="location-badge">🧭 Direction guide active</div>
+              </div>
+            </div>
+
+            <div class="checklist-card">
+              <div class="checklist-header">
+                <div>
+                  <p class="eyebrow">Special feature</p>
+                  <h3>Family Safety Checklist</h3>
+                </div>
+                <div class="progress-pill" id="checklistProgress">0/4 done</div>
+              </div>
+
+              <div class="checklist-progress">
+                <div id="checklistBar" class="checklist-bar"></div>
+              </div>
+
+              <label class="check-item">
+                <input type="checkbox" data-item="1" />
+                <span>Emergency contact numbers saved</span>
+              </label>
+              <label class="check-item">
+                <input type="checkbox" data-item="2" />
+                <span>First aid kit ready</span>
+              </label>
+              <label class="check-item">
+                <input type="checkbox" data-item="3" />
+                <span>Water and food packed</span>
+              </label>
+              <label class="check-item">
+                <input type="checkbox" data-item="4" />
+                <span>Safe shelter route known</span>
+              </label>
+            </div>
+
+            <div class="map-panel">
+              <div class="map-surface">
+                <div id="googleMap" class="google-map" aria-label="Google map showing emergency support points"></div>
+                <button id="liveLocationButton" class="live-location-placeholder" type="button" aria-label="Show my current live location">📍 Your live location</button>
+              </div>
+            </div>
+          </section>
+
+          <section class="container section">
+            <div class="admin-console">
+              <div class="console-header">
+                <div>
+                  <p class="eyebrow">Admin Console</p>
+                  <h2>Live response dashboard</h2>
+                </div>
+                <div class="console-badge">🟢 Active and ready</div>
+              </div>
+
+              <div class="admin-dashboard">
+                <div class="admin-card highlight">
+                  <p class="eyebrow">Admin Dashboard</p>
+                  <h3>Live Emergency Overview</h3>
+                  <p>Real-time monitoring and emergency response for every incident.</p>
+                </div>
+                <div class="admin-card">
+                  <h4>Active Cases</h4>
+                  <strong>8</strong>
+                </div>
+                <div class="admin-card">
+                  <h4>Safe Shelters</h4>
+                  <strong>3</strong>
+                </div>
+                <div class="admin-card">
+                  <h4>Response Team</h4>
+                  <strong>12 Online</strong>
+                </div>
+              </div>
+
+              <div class="dashboard-grid admin-grid">
+                <div class="chart-card">
+                  <div class="chart-header">
+                    <h3>Coverage & readiness</h3>
+                    <span>Updated live</span>
+                  </div>
+                  <div class="metric-row">
+                    <div>
+                      <strong>88%</strong>
+                      <p>Signal coverage</p>
+                    </div>
+                    <div class="bar-track"><div class="bar-fill green"></div></div>
+                  </div>
+                  <div class="metric-row">
+                    <div>
+                      <strong>76%</strong>
+                      <p>Volunteer readiness</p>
+                    </div>
+                    <div class="bar-track"><div class="bar-fill amber"></div></div>
+                  </div>
+                  <div class="metric-row">
+                    <div>
+                      <strong>95%</strong>
+                      <p>Medical dispatch</p>
+                    </div>
+                    <div class="bar-track"><div class="bar-fill blue"></div></div>
+                  </div>
+                </div>
+
+                <div class="chart-card">
+                  <div class="chart-header">
+                    <h3>Alert center</h3>
+                    <span>1 new priority</span>
+                  </div>
+                  <ul class="alert-list">
+                    <li class="alert-item priority">
+                      <div>
+                        <strong>River gate flood alert</strong>
+                        <p>Evacuation route needs review</p>
+                      </div>
+                      <button class="ack-btn" type="button" data-alert="river">Acknowledge</button>
+                    </li>
+                    <li class="alert-item">
+                      <div>
+                        <strong>Clinic backup battery</strong>
+                        <p>Power supply check completed</p>
+                      </div>
+                      <button class="ack-btn" type="button" data-alert="clinic">Acknowledge</button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="dispatch-panel">
+                <div class="dispatch-card">
+                  <div class="chart-header">
+                    <h3>Dispatch queue</h3>
+                    <span>3 active tasks</span>
+                  </div>
+                  <div class="dispatch-item">
+                    <div>
+                      <strong>Medical aid to Green Valley</strong>
+                      <p>Vehicle dispatched • 6 mins away</p>
+                    </div>
+                    <span class="signal-dot online"></span>
+                  </div>
+                  <div class="dispatch-item">
+                    <div>
+                      <strong>Supply relay to school shelter</strong>
+                      <p>Volunteer team assigned</p>
+                    </div>
+                    <span class="signal-dot pending"></span>
+                  </div>
+                  <div class="dispatch-item">
+                    <div>
+                      <strong>Community warning broadcast</strong>
+                      <p>Prepared for village announcement</p>
+                    </div>
+                    <span class="signal-dot online"></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="live-incidents">
+                <div class="section-heading">
+                  <p class="eyebrow">Live incidents</p>
+                  <h2>Recent emergency updates</h2>
+                </div>
+                <div class="incident-list">
+                  <div class="incident-card warning">
+                    <div>
+                      <strong>Flood warning near river belt</strong>
+                      <p>Residents advised to move to the school shelter.</p>
+                    </div>
+                    <span>2 min ago</span>
+                  </div>
+                  <div class="incident-card danger">
+                    <div>
+                      <strong>Medical team dispatched</strong>
+                      <p>Emergency support is moving toward Green Valley.</p>
+                    </div>
+                    <span>6 min ago</span>
+                  </div>
+                  <div class="incident-card success">
+                    <div>
+                      <strong>Power restored at shelter zone</strong>
+                      <p>Backup lights are now active at the community hall.</p>
+                    </div>
+                    <span>11 min ago</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="live-incidents">
+                <div class="section-heading">
+                  <p class="eyebrow">SOS activity</p>
+                  <h2>Recent SOS alerts</h2>
+                </div>
+                <div id="sosFeed" class="incident-list">
+                  <div class="incident-card warning">
+                    <div>
+                      <strong>No SOS alerts yet</strong>
+                      <p>When a user presses the SOS button, it will appear here with the time.</p>
+                    </div>
+                    <span>Waiting</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="contact-grid">
+                <div class="contact-card">
+                  <p class="eyebrow">Contact help</p>
+                  <h2>Send a real request to the support team</h2>
+                  <p>Easy to use mobile or embedded system interface for fast emergency coordination.</p>
+                </div>
+
+                <form id="contactForm" class="contact-form">
+                  <label>
+                    Your Name
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required />
+                  </label>
+                  <label>
+                    Village Name
+                    <input type="text" id="village" name="village" placeholder="Enter village" required />
+                  </label>
+                  <label>
+                    Emergency Type
+                    <select id="type" name="type" required>
+                      <option value="">Choose</option>
+                      <option>Medical</option>
+                      <option>Fire</option>
+                      <option>Flood</option>
+                      <option>Accident</option>
+                    </select>
+                  </label>
+                  <label>
+                    Details
+                    <textarea id="details" name="details" rows="4" placeholder="Describe the situation" required></textarea>
+                  </label>
+                  <button class="btn btn-primary full-width" type="submit">Send Help Request</button>
+                  <p id="formMessage" class="form-message">We will review your request quickly.</p>
+                </form>
+              </div>
+            </div>
+          </section>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="container footer-content">
+          <div>
+            <strong>Smart Emergency Response</strong>
+            <p>Built for fast, friendly, and reliable village safety coordination.</p>
+          </div>
+          <div class="footer-badge">✨ Admin-ready experience</div>
+        </div>
+      </footer>
+    </div>
+
+    <div id="galleryModal" class="gallery-modal" aria-hidden="true" role="dialog" aria-label="Image gallery">
+      <div class="gallery-backdrop" data-close="true"></div>
+      <button class="modal-close" aria-label="Close gallery">×</button>
+      <button class="modal-prev" aria-label="Previous image">‹</button>
+      <div class="modal-content" role="document">
+        <img src="" alt="" />
+        <div class="modal-caption"></div>
+      </div>
+      <button class="modal-next" aria-label="Next image">›</button>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
